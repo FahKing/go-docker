@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  godockerone:
+    container_name: godockerone
+    build: .
+    # command: go run main.go
+    # volumes:
+    #   - ./src:/go/src/godockerjson
+    working_dir: /go/src/godockerjson
+    ports:
+      - "8080:8080"
+    links: 
+      - godockertwo
+
+
+  godockertwo:
+    container_name: godockertwo
+    build: ./ser2/
+    # command: go run main.go
+    # volumes:
+    #   - ./src:/go/src/godockerjson/ser2
+    working_dir: /go/src/godockerjson/ser2
+    ports:
+      - "8000:8000"
+  
